@@ -1,9 +1,16 @@
 import React from "react";
+import Profile from "./profile/profile";
+import Menu from "./menu/Menu";
 
 const Leftbar = ()=>{
     return(
       <div>
-        <h1>Left bar</h1>
+        <div className="profile">
+            <Profile/>
+        </div>
+          <div className="menu">
+              <Menu/>
+          </div>
       </div>
     );
 }
