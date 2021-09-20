@@ -1,17 +1,19 @@
 import React from "react";
 import Profile from "./profile/profile";
 import Menu from "./menu/Menu";
+import { BoxStyled } from "./leftbar.style";
+
 
 const Leftbar = ()=>{
     return(
-      <div>
+      <BoxStyled>
         <div className="profile">
             <Profile/>
         </div>
           <div className="menu">
               <Menu/>
           </div>
-      </div>
+      </BoxStyled>
     );
 }
 export default Leftbar;

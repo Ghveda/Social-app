@@ -6,8 +6,11 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import { createSvgIcon } from '@mui/material/utils';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -51,6 +54,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+const HomeIcon = createSvgIcon(
+    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />,
+    'Home',
+);
+
 
 const Topbar = ()=>{
     return(
@@ -64,7 +72,7 @@ const Topbar = ()=>{
                         aria-label="open drawer"
                         sx={{ mr: 2 }}
                     >
-                        <MenuIcon />
+                    <HomeIcon/>
                     </IconButton>
                     <Typography
                         variant="h6"
@@ -72,7 +80,7 @@ const Topbar = ()=>{
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                     >
-                        MUI
+                        Ghveda's app
                     </Typography>
                     <Search>
                         <SearchIconWrapper>
@@ -83,6 +91,9 @@ const Topbar = ()=>{
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Search>
+                    <Stack direction="row" spacing={2} margin={1}>
+                        <Avatar src="/broken-image.jpg" />
+                    </Stack>
                 </Toolbar>
             </AppBar>
         </Box>

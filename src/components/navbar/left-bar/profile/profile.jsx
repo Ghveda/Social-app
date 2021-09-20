@@ -1,16 +1,21 @@
 import React from "react";
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { DivElement } from "../leftbar.style";
+
 
 const Profile = ()=>{
     return(
-        <div>
-            <div className="img">
-
-            </div>
-            <div className="box">
-                <p>name lastname</p>
-                <p>username</p>
-            </div>
-        </div>
+        <DivElement>
+            <Stack direction="row" spacing={2}>
+                <Avatar src="/broken-image.jpg" />
+                <Typography>
+                    <p>name lastname</p>
+                    <p>username</p>
+                </Typography>
+            </Stack>
+        </DivElement>
     )
 }
 
