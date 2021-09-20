@@ -1,4 +1,4 @@
-import { Leftbar, Rightbar } from "./components/navbar";
+import { Leftbar, Rightbar, TopBar } from "./components/navbar";
 import { Home, People, Profile, Photos } from "./components/Pages";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -7,6 +7,7 @@ const App= ()=> {
   return (
       <Router>
         <div>
+          <TopBar/>
           <Leftbar/>
           <Switch>
             <Route exact path="/">
