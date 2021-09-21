@@ -1,10 +1,13 @@
 import React from "react";
+import { MainBox, DivElement } from './right.style';
 
 const Rightbar = ()=>{
     return(
-        <div>
-            <h1>Right bar</h1>
-        </div>
+        <MainBox>
+            <DivElement>
+                <h1>Right bar</h1>
+            </DivElement>
+        </MainBox>
     );
 }
 

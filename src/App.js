@@ -1,6 +1,8 @@
 import { Leftbar, Rightbar, TopBar } from "./components/navbar";
 import { Home, People, Profile, Photos } from "./components/Pages";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Stack from '@mui/material/Stack';
+import { MainDiv } from './App.style';
 
 
 const App= ()=> {
@@ -8,6 +10,7 @@ const App= ()=> {
       <Router>
         <div>
           <TopBar/>
+          <Stack direction="row" spacing={2}>
           <Leftbar/>
           <Switch>
             <Route exact path="/">
@@ -24,6 +27,7 @@ const App= ()=> {
             </Route>
           </Switch>
           <Rightbar/>
+          </Stack>
         </div>
       </Router>
   );
