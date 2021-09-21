@@ -2,7 +2,6 @@ import { Leftbar, Rightbar, TopBar } from "./components/navbar";
 import { Home, People, Profile, Photos } from "./components/Pages";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
-import { MainDiv } from './App.style';
 
 
 const App= ()=> {

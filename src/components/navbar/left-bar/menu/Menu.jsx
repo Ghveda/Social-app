@@ -10,10 +10,7 @@ import { ListStyle, LiStyle } from '../leftbar.style';
 
 const linkStyle = {
     textDecoration: 'none',
-    color: '#616161',
-    hover:{
-        color: 'black'
-    }
+    color: '#616161'
 }
 
 const Menu = ()=>{

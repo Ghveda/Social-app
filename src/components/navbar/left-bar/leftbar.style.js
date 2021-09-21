@@ -9,12 +9,13 @@ export const BoxStyled = styled.div`
     `;
 
 export const DivElement = styled.div`
-  padding: 1px;
+  padding: 10px;
   width: auto;
   height: auto;
   border-radius: 10px;
   background-color: rgb(255,255,255,0.8);
   margin-top: 15px;
+  text-align: center;
     `;
 
 export const ListStyle = styled.ul`
@@ -23,8 +24,17 @@ export const ListStyle = styled.ul`
 
 
 export const LiStyle = styled.li`
-  border-bottom: 1px solid #616161;
-  width: 15vw;
+  border-bottom: 1px solid #E1E1E1;
+  width: 10vw;
   margin-bottom: 8%;
   margin-left: -1%;
+  padding: 5px;
+  
+  &:hover{
+    color:black;
+    background-color: #EBEBEB;
+    margin-left: 0;
+    border-radius: 10px;
+    cursor: pointer;
+  }
     `;

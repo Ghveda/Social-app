@@ -1,10 +1,28 @@
 import React from "react";
+import { MainDiv } from '../home.style';
+import Avatar from "@mui/material/Avatar";
+import { DivImg } from './posts.style';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import { Stack } from "@mui/material";
+
+
+const image = "https://lh3.googleusercontent.com/bXB6ueK2wyb44f8A5Vxgf0_JmmTThXr7cqhUY9vr133RZkGguV2WGKV-Q4LTimmijCgO2zD3p3FxpfXcT3MALfLP3UQo8q2VpvzRLkj0Gg=s626"
 
 const Posts = ()=>{
     return(
-        <div>
-            <h1>posts </h1>
-        </div>
+        <MainDiv>
+            <Stack direction={"row"} justifyContent={"space-between"}>
+                <Avatar/>
+                <DragIndicatorIcon/>
+            </Stack>
+            <label>post</label>
+            <div>
+                <DivImg src={image}/>
+            </div>
+            <Stack>
+
+            </Stack>
+        </MainDiv>
     );
 }
 export default Posts;
