@@ -14,7 +14,7 @@ const Profile = ()=>{
                     <Stack divider={<Divider orientation={"horizontal"} />} spacing={2} margin={3}>
                         <label><b>Name</b></label>
                         <label>Giorgi Ghvedashvili</label>
-                        <lable><b>Username</b></lable>
+                        <label><b>Username</b></label>
                         <label>Ghveda</label>
                     </Stack>
                 </div>

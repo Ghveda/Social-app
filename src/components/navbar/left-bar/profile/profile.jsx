@@ -10,10 +10,10 @@ const Profile = ()=>{
         <DivElement>
             <Stack direction="row" spacing={2}>
                 <Avatar src="/broken-image.jpg" />
-                <Typography>
+                <div>
                     <p>name lastname</p>
                     <p>username</p>
-                </Typography>
+                </div>
             </Stack>
         </DivElement>
     )
