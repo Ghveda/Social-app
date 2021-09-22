@@ -14,9 +14,12 @@ export const DivElement = styled.div`
   height: auto;
   border-radius: 10px;
   background-color: rgb(255,255,255,0.8);
-  margin-top: 15px;
-  text-align: center;
     `;
+
+export const DivElementMenu = styled.div`
+  margin-top: 10%;
+
+`;
 
 export const ListStyle = styled.ul`
   list-style: none;
@@ -24,10 +27,7 @@ export const ListStyle = styled.ul`
 
 
 export const LiStyle = styled.li`
-  border-bottom: 1px solid #E1E1E1;
-  width: 10vw;
-  margin-bottom: 8%;
-  margin-left: -1%;
+  width: auto;
   padding: 5px;
   
   &:hover{

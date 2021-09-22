@@ -11,7 +11,7 @@ export const InputStyled = styled.input`
 export const MainDiv = styled.div`
   padding: 1px;
   width: auto;
-  height: 10vh;
+  height: auto;
   border-radius: 10px;
   background-color: rgb(255,255,255,0.8);
   margin-top: 15px;

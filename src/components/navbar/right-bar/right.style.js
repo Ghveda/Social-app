@@ -20,5 +20,5 @@ export const DivElement = styled.div`
   height: auto;
   border-radius: 10px;
   background-color: rgb(255,255,255,0.8);
-  margin-top: 15px;
+  margin-top: 4%;
     `;

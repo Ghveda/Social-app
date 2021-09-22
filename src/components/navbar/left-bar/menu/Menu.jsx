@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import { DivElement } from "../leftbar.style";
 import { Home, PersonOutline, PhotoSizeSelectActual, PeopleOutline }  from '@mui/icons-material';
-import { ListStyle, LiStyle } from '../leftbar.style';
+import { ListStyle, LiStyle, DivElementMenu } from '../leftbar.style';
 import { useHistory } from "react-router-dom";
 
 
@@ -31,14 +30,16 @@ const Menu = ()=>{
     }
 
     return(
-        <DivElement>
-            <ListStyle>
-                <LiStyle onClick={homepage}><Home/>Home</LiStyle>
-                <LiStyle onClick={peoplepage}><PeopleOutline/>People</LiStyle>
-                <LiStyle onClick={photospage}><PhotoSizeSelectActual/>Photos</LiStyle>
-                <LiStyle onClick={profilepage}><PersonOutline/>Profile</LiStyle>
-            </ListStyle>
-        </DivElement>
+        <DivElementMenu>
+            <DivElement>
+                <ListStyle>
+                    <LiStyle onClick={homepage}><Home/>Home</LiStyle>
+                    <LiStyle onClick={peoplepage}><PeopleOutline/>People</LiStyle>
+                    <LiStyle onClick={photospage}><PhotoSizeSelectActual/>Photos</LiStyle>
+                    <LiStyle onClick={profilepage}><PersonOutline/>Profile</LiStyle>
+                </ListStyle>
+            </DivElement>
+        </DivElementMenu>
     )
 }
 

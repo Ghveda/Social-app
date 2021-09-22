@@ -7,7 +7,6 @@ import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 const Rightbar = ()=>{
     return(
         <MainBox>
-            <label>Contacts</label>
             <DivElement>
                 <Stack direction={"row"} padding={1} spacing={2}>
                     <Avatar/>

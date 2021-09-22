@@ -14,10 +14,10 @@ const HomeIcon = createSvgIcon(
 const Leftbar = ()=>{
     return(
       <BoxStyled>
-        <div className="profile">
+        <div>
             <Profile/>
         </div>
-          <div className="menu">
+          <div>
               <Menu/>
           </div>
       </BoxStyled>

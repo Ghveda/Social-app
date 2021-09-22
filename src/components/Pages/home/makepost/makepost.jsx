@@ -8,10 +8,10 @@ const MakePost = ()=>{
         <MainDiv>
             <div>
             <form>
-                <Stack spacing={1} direction={"row"} marginTop={1.5}>
+                <Stack spacing={1} direction={"row"}>
                     <Avatar/>
                     <InputStyled placeholder="What's new Name"/>
-                    <Button variant="contained" type="submit">Post it</Button>
+                    <Button variant="contained" type="submit" size={"small"}>Post it</Button>
                 </Stack>
             </form>
             </div>
