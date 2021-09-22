@@ -1,9 +1,8 @@
 import React from "react";
 import { MainDiv } from '../home.style';
-import Avatar from "@mui/material/Avatar";
 import { DivImg } from './posts.style';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
-import { Stack } from "@mui/material";
+import { Stack, Avatar } from "@mui/material";
 
 
 const image = "https://lh3.googleusercontent.com/bXB6ueK2wyb44f8A5Vxgf0_JmmTThXr7cqhUY9vr133RZkGguV2WGKV-Q4LTimmijCgO2zD3p3FxpfXcT3MALfLP3UQo8q2VpvzRLkj0Gg=s626"
@@ -19,9 +18,6 @@ const Posts = ()=>{
             <div>
                 <DivImg src={image}/>
             </div>
-            <Stack>
-
-            </Stack>
         </MainDiv>
     );
 }

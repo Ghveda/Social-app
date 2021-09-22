@@ -7,6 +7,13 @@ export const MainBox = styled.div`
   margin-right: 20px;
     `;
 
+
+export const LabelStyled = styled.label`
+  padding: 10px;
+
+`;
+
+
 export const DivElement = styled.div`
   padding: 1px;
   width: auto;

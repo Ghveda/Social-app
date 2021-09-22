@@ -1,7 +1,5 @@
 import React from "react";
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
+import { Stack, Button, Avatar } from '@mui/material';
 import { InputStyled, MainDiv } from './makepost.style';
 
 

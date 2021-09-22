@@ -1,15 +1,10 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+import { AppBar, Box, Toolbar, IconButton, Typography, Avatar, Stack, Button }  from '@mui/material';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { createSvgIcon } from '@mui/material/utils';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -54,6 +49,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+
 const HomeIcon = createSvgIcon(
     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />,
     'Home',
@@ -61,6 +57,16 @@ const HomeIcon = createSvgIcon(
 
 
 const Topbar = ()=>{
+    const history = useHistory();
+
+    const routefunction = ()=>{
+        history.push("/singin");
+    }
+
+    const homepage = ()=>{
+        history.push('/');
+    }
+
     return(
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -72,7 +78,7 @@ const Topbar = ()=>{
                         aria-label="open drawer"
                         sx={{ mr: 2 }}
                     >
-                    <HomeIcon/>
+                    <HomeIcon onClick={homepage}/>
                     </IconButton>
                     <Typography
                         variant="h6"
@@ -92,6 +98,7 @@ const Topbar = ()=>{
                         />
                     </Search>
                     <Stack direction="row" spacing={2} margin={1}>
+                        <Button variant="outlined" color="error" onClick={routefunction}>Sing in</Button>
                         <Avatar src="/broken-image.jpg" />
                     </Stack>
                 </Toolbar>

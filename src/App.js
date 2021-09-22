@@ -1,7 +1,8 @@
 import { Leftbar, Rightbar, TopBar } from "./components/navbar";
 import { Home, People, Profile, Photos } from "./components/Pages";
+import { Singin, Registration } from "./components/verification";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Stack from '@mui/material/Stack';
+import { Stack } from '@mui/material';
 
 
 const App= ()=> {
@@ -21,9 +22,15 @@ const App= ()=> {
             <Route exact path="/profile">
               <Profile/>
             </Route>
-            <Route exact path="photos">
+            <Route exact path="/photos">
               <Photos/>
             </Route>
+            <Route exact path="/singin">
+              <Singin/>
+            </Route>
+          <Route exact path="/registration">
+            <Registration/>
+          </Route>
           </Switch>
           <Rightbar/>
           </Stack>

@@ -1,10 +1,7 @@
 import React from "react";
-import Stack from "@mui/material/Stack";
-import Avatar from "@mui/material/Avatar";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
+import { Stack, Avatar, Button } from "@mui/material";
 import { MainDiv } from '../main.style';
 import { DivBox } from './people.style';
-import Button from '@mui/material/Button';
 
 
 const People = ()=>{
@@ -15,10 +12,9 @@ const People = ()=>{
                         <Avatar/>
                         <label>Giorgi Ghvedashvili</label>
                     <div>
-                        <Button variant="contained">Contained</Button>
-                        <Button variant="outlined">Outlined</Button>
+                        <Button variant="contained">Add</Button>
+                        <Button variant="outlined">Ignore</Button>
                     </div>
-                    <DragIndicatorIcon/>
                 </Stack>
             </DivBox>
         </MainDiv>

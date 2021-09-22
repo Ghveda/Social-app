@@ -1,7 +1,6 @@
 import React from "react";
-import { MainBox, DivElement } from './right.style';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
+import { MainBox, DivElement, LabelStyled } from './right.style';
+import { Stack, Avatar } from '@mui/material';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
 
@@ -12,7 +11,7 @@ const Rightbar = ()=>{
             <DivElement>
                 <Stack direction={"row"} padding={1} spacing={2}>
                     <Avatar/>
-                    <label>Giorgi Ghvedashvili</label>
+                    <LabelStyled>Giorgi Ghvedashvili</LabelStyled>
                     <DragIndicatorIcon/>
                 </Stack>
             </DivElement>
