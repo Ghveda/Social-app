@@ -6,7 +6,7 @@ import { DivElement } from "../leftbar.style";
 const Profile = ()=>{
     return(
         <DivElement>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={2} display={"flex"}>
                 <Avatar src="/broken-image.jpg" />
                 <div>
                     <p>name lastname</p>

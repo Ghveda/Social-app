@@ -18,7 +18,6 @@ export const DivElement = styled.div`
 
 export const DivElementMenu = styled.div`
   margin-top: 10%;
-
 `;
 
 export const ListStyle = styled.ul`
@@ -29,11 +28,11 @@ export const ListStyle = styled.ul`
 export const LiStyle = styled.li`
   width: auto;
   padding: 5px;
+  display: flex;
   
   &:hover{
     color:black;
     background-color: #EBEBEB;
-    margin-left: 0;
     border-radius: 10px;
     cursor: pointer;
   }

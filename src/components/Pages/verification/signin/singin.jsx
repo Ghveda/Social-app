@@ -13,7 +13,6 @@ const Singin = ()=>{
         history.push('/registration');
     }
 
-
     return(
         <MainDiv>
             <Stack direction={"row"} spacing={7}>
