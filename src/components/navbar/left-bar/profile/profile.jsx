@@ -7,7 +7,7 @@ const Profile = ()=>{
     return(
         <DivElement>
             <Stack direction="row" spacing={2} display={"flex"}>
-                <Avatar src="/broken-image.jpg" />
+                <Avatar/>
                 <div>
                     <p>name lastname</p>
                     <p>username</p>

@@ -1,8 +1,11 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
-export const globalStyle = createGlobalStyle`
-  div{
-    padding: 0;
-    margin: 0
-  }
+
+export const verificationStyle = styled.div`
+    display: flex;
+    border: 1px solid black;
+    justify-content: ${props=>(
+        props.textAlign==='false'? "center":
+            ""
+        )};
     `;

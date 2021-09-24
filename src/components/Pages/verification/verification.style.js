@@ -1,6 +1,9 @@
 import styled from 'styled-components';
+import { bool } from '../../../App';
 
 export const MainDiv = styled.div`
+  display: flex;
+  margin: ${!bool? "auto": 0};
   width: 60vw;
   margin-top: 30px;
   height: auto;

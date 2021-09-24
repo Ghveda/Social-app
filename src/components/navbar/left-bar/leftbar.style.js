@@ -22,6 +22,7 @@ export const DivElementMenu = styled.div`
 
 export const ListStyle = styled.ul`
   list-style: none;
+  display: inline;
     `;
 
 

@@ -1,14 +1,22 @@
 import React from "react";
-import { contextStyled } from './context.style';
+// import { contextStyled } from './context.style';
+import styled from 'styled-components';
+
+
+const ContextStyled = styled.div`
+  position: fixed;
+  background-color: #461515;
+  color: #d70000;
+`;
 
 const Context = ()=>{
     return(
-            <contextStyled>
+            <ContextStyled>
                 <ul>
                     <li>something</li>
                     <li>something</li>
                 </ul>
-            </contextStyled>
+            </ContextStyled>
     );
 }
 

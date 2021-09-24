@@ -1,7 +1,21 @@
 import React from "react";
-import { MainDiv, ImgDiv } from './profile.style';
 import { Divider, Stack } from "@mui/material";
+import styled from "styled-components";
 
+const MainDiv = styled.div`
+  width: 60vw;
+margin-top: 10px;
+  height: auto;
+  background-color: rgb(255,255,255,0.8);
+  border-radius: 10px;
+  padding: 10px;
+`;
+
+
+const ImgDiv = styled.img`
+    width: 15vw;
+    height: 40vh;
+    `;
 
 const Profile = ()=>{
     return(
