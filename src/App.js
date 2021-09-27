@@ -1,14 +1,31 @@
 import { Leftbar, Rightbar, TopBar } from "./components/navbar";
 import { Home, People, Profile, Photos } from "./components/Pages";
 import { Singin, Registration } from "./components/Pages/verification";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Stack } from '@mui/material';
 import { PublicRoute, PrivateRoute } from "react-private-public-route";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 export var bool = true;
 
 const App= ()=> {
+    const [data, getStateData] = useState([]);
+
+    const getAll = async ()=>{
+        await axios('http://localhost:3000/users')
+            .then((res)=> console.log(res.data))
+
+    }
+
+
+    useEffect(()=>{
+        getAll()
+
+    },[])
+
+    // console.log(data)
   return (
       <Router>
         <div>

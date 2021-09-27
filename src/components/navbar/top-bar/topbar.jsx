@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar, Box, Toolbar, IconButton, Typography, Avatar, Stack, Button }  from '@mui/material';
 import { Search, Home } from '@mui/icons-material';
 import { SearchStyled, SearchIconWrapper, StyledInputBase } from './topbar.style';
-import { routeFunction, homepage } from './topbar.logic';
+import { homepage } from './topbar.logic';
 import {useHistory} from "react-router-dom";
 
 
