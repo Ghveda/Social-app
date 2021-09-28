@@ -1,15 +1,15 @@
 import React from 'react';
-import { AppBar, Box, Toolbar, IconButton, Typography, Avatar, Stack, Button }  from '@mui/material';
+import { AppBar, Box, Toolbar, IconButton, Typography, Avatar, Stack } from '@mui/material';
 import { Search, Home } from '@mui/icons-material';
 import { SearchStyled, SearchIconWrapper, StyledInputBase } from './topbar.style';
 import { homepage } from './topbar.logic';
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
-const Topbar = ()=>{
+const Topbar = () => {
     const history = useHistory();
 
-    return(
+    return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
@@ -19,9 +19,9 @@ const Topbar = ()=>{
                         color="inherit"
                         aria-label="open drawer"
                         sx={{ mr: 2 }}
-                        onClick={()=>homepage(history)}
+                        onClick={() => homepage(history)}
                     >
-                    <Home/>
+                        <Home />
                     </IconButton>
                     <Typography
                         variant="h6"
@@ -41,7 +41,7 @@ const Topbar = ()=>{
                         />
                     </SearchStyled>
                     <Stack direction="row" spacing={2} margin={1}>
-                        <Avatar/>
+                        <Avatar />
                     </Stack>
                 </Toolbar>
             </AppBar>
