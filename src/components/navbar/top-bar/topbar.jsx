@@ -1,13 +1,18 @@
 import React from 'react';
-import { AppBar, Box, Toolbar, IconButton, Typography, Avatar, Stack } from '@mui/material';
+import { AppBar, Box, Toolbar, IconButton, Typography, Stack, Button } from '@mui/material';
 import { Search, Home } from '@mui/icons-material';
 import { SearchStyled, SearchIconWrapper, StyledInputBase } from './topbar.style';
 import { homepage } from './topbar.logic';
 import { useHistory } from "react-router-dom";
 
 
-const Topbar = () => {
+const Topbar = ({ logout }) => {
     const history = useHistory();
+
+    const logoutFunc = () => {
+        logout('')
+        history.push('/signin')
+    }
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -41,7 +46,7 @@ const Topbar = () => {
                         />
                     </SearchStyled>
                     <Stack direction="row" spacing={2} margin={1}>
-                        <Avatar />
+                        <Button variant="contained" color="success" onClick={logoutFunc}>Log out</Button>
                     </Stack>
                 </Toolbar>
             </AppBar>

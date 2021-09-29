@@ -9,14 +9,14 @@ const MainDiv = styled.div`
   height: auto;
 `;
 
-const Home = ()=>{
-    return(
+const Home = () => {
+    return (
         <MainDiv>
             <div>
-                <MakePost/>
+                <MakePost />
             </div>
             <div>
-                <Posts/>
+                <Posts />
             </div>
         </MainDiv>
     );

@@ -3,14 +3,13 @@ import { Stack, Avatar } from '@mui/material';
 import { DivElement } from "../leftbar.style";
 
 
-const Profile = ()=>{
-    return(
+const Profile = ({ token }) => {
+    return (
         <DivElement>
             <Stack direction="row" spacing={2} display={"flex"}>
-                <Avatar/>
+                <Avatar />
                 <div>
-                    <p>name lastname</p>
-                    <p>username</p>
+                    <p>Username: {token.data}</p>
                 </div>
             </Stack>
         </DivElement>

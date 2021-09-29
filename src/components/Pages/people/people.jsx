@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Stack, Avatar, Button } from "@mui/material";
 import styled from "styled-components";
+import axios from "axios";
 
 const MainDiv = styled.div`
   width: 60vw;
@@ -17,19 +18,33 @@ const DivBox = styled.div`
   margin-top: 15px;
     `;
 
+
 const People = ()=>{
+    const [data, getData] = useState({'data': [{'username': 'something'}]})
+
+    const users = async()=>{
+        await axios.post('http://localhost:3000/users/allUsers').then(test=>getData(test))
+        console.log(data.data.map(each=>each.username))
+    }
+    
+    useEffect(() => {
+        users()
+    }, [])
+
     return(
         <MainDiv>
-            <DivBox>
+            {data.data.map(each=>(
+                <DivBox>
                 <Stack direction={"row"} padding={1} spacing={2} justifyContent={"space-between"}>
                         <Avatar/>
-                        <label>Giorgi Ghvedashvili</label>
+                        <label>{each.username}</label>
                     <div>
                         <Button variant="contained">Add</Button>
                         <Button variant="outlined">Ignore</Button>
                     </div>
                 </Stack>
             </DivBox>
+            ))}
         </MainDiv>
     );
 }

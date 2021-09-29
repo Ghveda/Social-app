@@ -4,16 +4,16 @@ import Menu from "./menu/Menu";
 import { BoxStyled } from "./leftbar.style";
 
 
-const Leftbar = ()=>{
-    return(
-      <BoxStyled>
-        <div>
-            <Profile/>
-        </div>
-          <div>
-              <Menu/>
-          </div>
-      </BoxStyled>
-    );
+const Leftbar = ({ token }) => {
+  return (
+    <BoxStyled>
+      <div>
+        <Profile token={token} />
+      </div>
+      <div>
+        <Menu />
+      </div>
+    </BoxStyled>
+  );
 }
 export default Leftbar;

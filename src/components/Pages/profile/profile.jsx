@@ -17,7 +17,7 @@ const ImgDiv = styled.img`
     height: 40vh;
     `;
 
-const Profile = ()=>{
+const Profile = ({token})=>{
     return(
         <MainDiv>
             <Stack direction={"row"}>
@@ -26,10 +26,8 @@ const Profile = ()=>{
                 </div>
                 <div>
                     <Stack divider={<Divider orientation={"horizontal"} />} spacing={2} margin={3}>
-                        <label><b>Name</b></label>
-                        <label>Giorgi Ghvedashvili</label>
                         <label><b>Username</b></label>
-                        <label>Ghveda</label>
+                        <label>{token.data}</label>
                     </Stack>
                 </div>
             </Stack>

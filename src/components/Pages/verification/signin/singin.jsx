@@ -10,10 +10,9 @@ const image = "https://s.driving-tests.org/wp-content/uploads/2020/07/divided-hi
 
 export var token = '';
 
-const Singin = ({ changeBool }) => {
+const Singin = ({ getToken, getBool }) => {
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
-    const [newToken, makeToken] = useState('');
     const history = useHistory();
 
     const singin = () => {
@@ -22,7 +21,14 @@ const Singin = ({ changeBool }) => {
             password: password
         }).then((response) => {
             const resToken = jwt.decode(response.data, 'secret');
-            makeToken(resToken)
+            getToken(resToken)
+            getBool(true)
+            history.push('/')
+
+        }).catch((error) => {
+            history.push('/signin')
+            alert('password or username is incorrect')
+
         })
     };
 
