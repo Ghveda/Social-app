@@ -1,6 +1,8 @@
 import React from "react";
 import { Divider, Stack } from "@mui/material";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+
 
 const MainDiv = styled.div`
   width: 60vw;
@@ -17,12 +19,14 @@ const ImgDiv = styled.img`
     height: 40vh;
     `;
 
-const Profile = ({token})=>{
-    return(
+const Profile = () => {
+    const token = useSelector(state => state.getToken);
+
+    return (
         <MainDiv>
             <Stack direction={"row"}>
                 <div>
-                    <ImgDiv src={"https://www.dailymoss.com/wp-content/uploads/2019/08/funny-profile-pic59.jpg"}/>
+                    <ImgDiv src={"https://www.dailymoss.com/wp-content/uploads/2019/08/funny-profile-pic59.jpg"} />
                 </div>
                 <div>
                     <Stack divider={<Divider orientation={"horizontal"} />} spacing={2} margin={3}>

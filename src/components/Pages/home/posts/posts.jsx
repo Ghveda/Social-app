@@ -1,15 +1,10 @@
-import React from "react";
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
-import { Stack, Avatar } from "@mui/material";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
+import { Button } from "@mui/material"
+import { useSelector } from "react-redux";
 
 
-const image = "https://lh3.googleusercontent.com/bXB6ueK2wyb44f8A5Vxgf0_JmmTThXr7cqhUY9vr133RZkGguV2WGKV-Q4LTimmijCgO2zD3p3FxpfXcT3MALfLP3UQo8q2VpvzRLkj0Gg=s626"
-
-const DivImg = styled.img`
-  width: 56vw;
-  border-radius: 10px;
-    `;
 
 const MainDiv = styled.div`
   width: auto;
@@ -18,20 +13,44 @@ const MainDiv = styled.div`
   border-radius: 10px;
   margin-top: 10px;
   padding: 10px;
+  hr{
+    display: flex;
+    width: 10vw;
+    margin-left: 0;
+}
 `;
 
-const Posts = ()=>{
-    return(
-        <MainDiv>
-            <Stack direction={"row"} justifyContent={"space-between"}>
-                <Avatar/>
-                <DragIndicatorIcon/>
-            </Stack>
-            <label>post</label>
-            <div>
-                <DivImg src={image}/>
-            </div>
-        </MainDiv>
+
+const Posts = () => {
+    const [post, getPost] = useState([]);
+    const token = useSelector(state => state.getToken);
+
+
+    const getData = async () => {
+        await axios.post('http://localhost:3000/posts/data')
+            .then(response => {
+                console.log(response.data)
+                getPost(response.data)
+            })
+    }
+
+
+    useEffect(() => {
+        getData()
+    }, [])
+
+    return (
+        <div>
+            {post.map(each => (
+                <MainDiv key={each.id}>
+                    <label><b>{each.username}</b></label>
+                    <hr />
+                    <p>{each.post}</p>
+                    {console.log(each.username)
+                    }
+                </MainDiv>
+            ))}
+        </div>
     );
 }
 export default Posts;

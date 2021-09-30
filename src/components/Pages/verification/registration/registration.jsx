@@ -4,12 +4,17 @@ import { Button, Divider, Stack } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import jwt from 'jwt-simple';
+import { useDispatch } from 'react-redux';
+import { tokenAction } from '../../../redux/actions/action'
 
 
-const Registration = ({ getToken, getBool }) => {
+
+const Registration = () => {
     const history = useHistory();
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
+    const dispatch = useDispatch();
+
 
     const registration = async () => {
         await axios.post('http://localhost:3000/users/registration', {
@@ -17,11 +22,12 @@ const Registration = ({ getToken, getBool }) => {
             password: password
         }).then((response) => {
             const resToken = jwt.decode(response.data, 'secret');
-            getToken(resToken)
-            getBool(true)
+            dispatch(tokenAction(resToken.data))
             history.push('/')
-        }).catch(() => {
+        }).catch((error) => {
             alert('something incorrect')
+            console.log(error)
+            history.push('/registration')
         })
     };
 
@@ -38,10 +44,12 @@ const Registration = ({ getToken, getBool }) => {
                     <h1>Sign in </h1>
                     <div>
                         <Stack divider={<Divider orientation={"horizontal"} />} spacing={1}>
-                            <label>Username</label>
-                            <InputStyled type={"text"} placeholder={"type here"} onChange={(e) => setUsername(e.target.value)} />
-                            <label>Password</label>
-                            <InputStyled type={"password"} placeholder={"type here"} onChange={(e) => setPassword(e.target.value)} />
+                            <label for="input1">Username:
+                                <InputStyled id="input1" type={"text"} placeholder={"type here"} onChange={(e) => setUsername(e.target.value)} required />
+                            </label>
+                            <label for="label2">Password:
+                                <InputStyled id="label2" type={"password"} placeholder={"type here"} onChange={(e) => setPassword(e.target.value)} required />
+                            </label>
                             <LittleLabel onClick={signIn}>Sign in</LittleLabel>
                             <div>
                                 <Button variant="contained" type={"submit"} onClick={registration}>Register</Button>

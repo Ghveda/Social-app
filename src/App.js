@@ -5,42 +5,29 @@ import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Stack } from '@mui/material';
 import { PublicRoute, PrivateRoute } from "react-private-public-route";
 import { useState } from "react";
-import {ProtectedPages} from './protectedPages';
 
 
 const App = () => {
-  const [token, getToken] = useState({});
-  const [bool, getBool] = useState(false);
+  const bool = true;
 
-  
   return (
     <Router>
       <div>
         <PrivateRoute isAuthenticated={bool} redirect="/signin">
-          <TopBar logout={getToken} />
+          <TopBar />
         </PrivateRoute>
         <Stack direction="row" spacing={2}>
-          <PrivateRoute isAuthenticated={bool} redirect="/signin">
-            <Leftbar token={token} />
-          </PrivateRoute>
+          <PrivateRoute component={Leftbar} isAuthenticated={bool} redirect="/signin" />
           <Switch>
             <PrivateRoute exact path="/people" component={People} isAuthenticated={bool} redirect="/signin" />
             <PrivateRoute exact path="/" component={Home} isAuthenticated={bool} redirect="/signin" />
-            <PrivateRoute exact path="/profile" isAuthenticated={bool} redirect="/signin">
-              <Profile token={token} />
-            </PrivateRoute>
+            <PrivateRoute exact path="/profile" component={Profile} isAuthenticated={bool} redirect="/signin" />
             <PrivateRoute exact path="/photos" component={Photos} isAuthenticated={bool} redirect="/signin" />
             <PrivateRoute exact path="/people" component={People} isAuthenticated={bool} redirect="/signin" />
-            
-            <PublicRoute exact path="/signin" textAlign={bool}>
-              <Singin getToken={getToken} getBool={getBool} />
-            </PublicRoute>
-            <PublicRoute exact path="/registration" textAlign={bool} >
-              <Registration getToken={getToken} getBool={getBool} />
-            </PublicRoute>
-            
+            <PublicRoute exact path="/signin" component={Singin} textAlign={bool} />
+            <PublicRoute exact path="/registration" component={Registration} textAlign={bool} />
           </Switch>
-          <PrivateRoute component={Rightbar} isAuthenticated={bool} redirect="/signin" />
+          <PrivateRoute isAuthenticated={bool} component={Rightbar} redirect="/signin" />
         </Stack>
       </div>
     </Router>

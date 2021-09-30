@@ -4,14 +4,17 @@ import { Search, Home } from '@mui/icons-material';
 import { SearchStyled, SearchIconWrapper, StyledInputBase } from './topbar.style';
 import { homepage } from './topbar.logic';
 import { useHistory } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { tokenAction } from '../../redux/actions/action'
 
 
-const Topbar = ({ logout }) => {
+const Topbar = () => {
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const logoutFunc = () => {
-        logout('')
-        history.push('/signin')
+        dispatch(tokenAction(''));
+        history.push('/signin');
     }
 
     return (

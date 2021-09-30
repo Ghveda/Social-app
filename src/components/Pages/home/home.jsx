@@ -13,10 +13,10 @@ const Home = () => {
     return (
         <MainDiv>
             <div>
-                <MakePost />
+                <MakePost/>
             </div>
             <div>
-                <Posts />
+                <Posts/>
             </div>
         </MainDiv>
     );

@@ -4,11 +4,11 @@ import Menu from "./menu/Menu";
 import { BoxStyled } from "./leftbar.style";
 
 
-const Leftbar = ({ token }) => {
+const Leftbar = () => {
   return (
     <BoxStyled>
       <div>
-        <Profile token={token} />
+        <Profile />
       </div>
       <div>
         <Menu />
