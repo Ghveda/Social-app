@@ -1,7 +1,6 @@
 import React from "react";
 import { Divider, Stack } from "@mui/material";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
 
 
 const MainDiv = styled.div`
@@ -20,7 +19,6 @@ const ImgDiv = styled.img`
     `;
 
 const Profile = () => {
-    const token = useSelector(state => state.getToken);
 
     return (
         <MainDiv>
@@ -31,7 +29,7 @@ const Profile = () => {
                 <div>
                     <Stack divider={<Divider orientation={"horizontal"} />} spacing={2} margin={3}>
                         <label><b>Username</b></label>
-                        <label>{token.data}</label>
+                        <label>{localStorage.getItem("token")}</label>
                     </Stack>
                 </div>
             </Stack>

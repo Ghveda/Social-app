@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Stack, Button, Avatar } from '@mui/material';
 import styled from "styled-components";
 import axios from 'axios';
-import { useSelector } from "react-redux";
 
 
 const InputStyled = styled.input`
@@ -27,11 +26,10 @@ const MainDiv = styled.div`
 
 const MakePost = () => {
     const [post, getPost] = useState({});
-    const token = useSelector(state => state.getToken);
 
     const makePostClick = async () => {
         await axios.post('http://localhost:3000/posts/create', {
-            username: token,
+            username: localStorage.getItem('token'),
             post: post
         })
         window.location.reload();

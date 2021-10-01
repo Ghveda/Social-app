@@ -4,16 +4,12 @@ import { Button, Divider, Stack } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import jwt from 'jwt-simple';
-import { useDispatch } from 'react-redux';
-import { tokenAction } from '../../../redux/actions/action'
-
 
 
 const Registration = () => {
     const history = useHistory();
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
-    const dispatch = useDispatch();
 
 
     const registration = async () => {
@@ -22,7 +18,8 @@ const Registration = () => {
             password: password
         }).then((response) => {
             const resToken = jwt.decode(response.data, 'secret');
-            dispatch(tokenAction(resToken.data))
+            localStorage.setItem('token', resToken.data)
+            localStorage.setItem('verification', 'true')
             history.push('/')
         }).catch((error) => {
             alert('something incorrect')
@@ -34,7 +31,7 @@ const Registration = () => {
     const image = "https://pbs.twimg.com/profile_images/1228270856817823744/yAhugoXc_400x400.jpg";
 
     const signIn = () => {
-        history.push('/signin');
+        history.push('/login');
     }
     return (
         <MainDiv>

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { Button } from "@mui/material"
-import { useSelector } from "react-redux";
-
+import DialogPage from "./Dialog/Dialog";
 
 
 const MainDiv = styled.div`
@@ -23,8 +22,6 @@ const MainDiv = styled.div`
 
 const Posts = () => {
     const [post, getPost] = useState([]);
-    const token = useSelector(state => state.getToken);
-
 
     const getData = async () => {
         await axios.post('http://localhost:3000/posts/data')
@@ -34,6 +31,17 @@ const Posts = () => {
             })
     }
 
+    const deleteAction = async (id) => {
+        await axios.post('http://localhost:3000/posts/delete', {
+            id: id
+        })
+            .then(response => {
+                console.log(response)
+                window.location.reload();
+            }).catch(
+                (error) => console.log(error)
+            )
+    }
 
     useEffect(() => {
         getData()
@@ -46,7 +54,13 @@ const Posts = () => {
                     <label><b>{each.username}</b></label>
                     <hr />
                     <p>{each.post}</p>
-                    {console.log(each.username)
+                    {each.username === localStorage.getItem('token') ?
+                        <div>
+                            <DialogPage data={each.post} id={each.id} />
+                            <Button variant="outlined" onClick={() => deleteAction(each.id)}>Delete</Button>
+                        </div>
+                        :
+                        <p></p>
                     }
                 </MainDiv>
             ))}

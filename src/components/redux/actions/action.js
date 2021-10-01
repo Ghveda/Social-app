@@ -1,5 +1,5 @@
 export const tokenAction = (data) => {
-    if (data==='') {
+    if (data === '') {
         return {
             type: 'NULL',
             payload: ''
@@ -7,6 +7,20 @@ export const tokenAction = (data) => {
     } else {
         return {
             type: 'TOKEN',
+            payload: data
+        }
+    }
+}
+
+export const verification = (data) => {
+    if (data === true) {
+        return {
+            type: 'TRUE',
+            payload: data
+        }
+    } else {
+        return {
+            type: 'FALSE',
             payload: data
         }
     }

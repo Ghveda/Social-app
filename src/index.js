@@ -6,11 +6,11 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import allData from './components/redux/reducers/reducer';
 
-const store = createStore(allData)
+const data = createStore(allData)
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={data}>
       <App />
     </Provider>
   </React.StrictMode>,
