@@ -24,6 +24,7 @@ font-size: 0.8rem;
 const DialogPage = ({ data, id }) => {
 
     const [open, setOpen] = useState(false);
+    const [changedData, setChangedData] = useState('');
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -32,7 +33,7 @@ const DialogPage = ({ data, id }) => {
     const handleClose = async (id, data) => {
         await axios.post('http://localhost:3000/posts/update', {
             id: id,
-            data: data
+            data: changedData
         })
         .then(response=>console.log(response), setOpen(false), window.location.reload())
 
@@ -53,9 +54,7 @@ const DialogPage = ({ data, id }) => {
             >
                 <DialogTitle>{"Edit your own code!"}</DialogTitle>
                 <DialogContent>
-                    <TextareaStyled>
-                        {data}
-                    </TextareaStyled>
+                    <TextareaStyled defaultValue={data}  onChange={(e)=>setChangedData(e.target.value)}/>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={()=>handleClose(id,data)}>Save</Button>
