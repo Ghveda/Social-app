@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { Button } from "@mui/material"
+import { Button, Stack } from "@mui/material"
 import DialogPage from "./Dialog/Dialog";
 
 
@@ -55,10 +55,10 @@ const Posts = () => {
                     <hr />
                     <p>{each.post}</p>
                     {each.username === localStorage.getItem('token') ?
-                        <div>
+                        <Stack spacing={2} direction={"row"}>
                             <DialogPage data={each.post} id={each.id} />
                             <Button variant="outlined" onClick={() => deleteAction(each.id)}>Delete</Button>
-                        </div>
+                        </Stack>
                         :
                         <p></p>
                     }
