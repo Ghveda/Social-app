@@ -32,7 +32,7 @@ const MakePost = () => {
             username: localStorage.getItem('token'),
             post: post
         })
-        window.location.reload();
+        // window.location.reload();
     }
     return (
         <MainDiv>
