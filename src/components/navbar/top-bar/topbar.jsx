@@ -45,9 +45,11 @@ const Topbar = () => {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </SearchStyled>
-                    <Stack direction="row" spacing={2} margin={1}>
-                        <Button variant="contained" color="success" onClick={logoutFunc}>Log out</Button>
-                    </Stack>
+                    {localStorage.getItem('token') ?
+                        <Stack direction="row" spacing={2} margin={1}>
+                            <Button variant="contained" color="success" onClick={logoutFunc}>Log out</Button>
+                        </Stack>
+                        : null}
                 </Toolbar>
             </AppBar>
         </Box>

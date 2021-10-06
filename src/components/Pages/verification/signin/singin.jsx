@@ -23,6 +23,7 @@ const Singin = () => {
             if (response) {
                 const resToken = await jwt.decode(response.data, 'secret');
                 localStorage.setItem("token", resToken.data);
+                console.log(response)
                 history.push('/');
             } else {
                 alert('password or username is incorrect')

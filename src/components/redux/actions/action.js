@@ -1,32 +1,48 @@
-// export const tokenAction = (data) => {
-//     if (data === '') {
-//         return {
-//             type: 'NULL',
-//             payload: ''
-//         }
-//     } else {
-//         return {
-//             type: 'TOKEN',
-//             payload: data
-//         }
-//     }
-// }
+import axios from "axios"
 
-// export const verification = (data) => {
-//     if (data === true) {
-//         return {
-//             type: 'TRUE',
-//             payload: data
-//         }
-//     } else {
-//         return {
-//             type: 'FALSE',
-//             payload: data
-//         }
-//     }
-// }
 
 export const fetchAll = (action) => ({
     type: 'GET_ALL',
     payload: action
 })
+
+
+export const fetchAllPosts = () => {
+    return dispatch => {
+        axios.post('http://localhost:3000/posts/data').then(res => dispatch(fetchAll(res.data)))
+    }
+}
+
+
+export const deleteWithId = (id) => {
+    return dispatch => {
+        axios.post('http://localhost:3000/posts/delete', {
+            id: id
+        }).then(() => dispatch(fetchAllPosts()))
+    }
+}
+
+
+export const fetchUsers = (action) => ({
+    type: 'USERS',
+    payload: action
+})
+
+
+export const fetchAllUsers = () => {
+    return dispatch => {
+        axios.post('http://localhost:3000/users/allUsers')
+            .then(state => dispatch(fetchUsers(state.data)))
+    }
+}
+
+
+export const updatePost = (id, data) => {
+    return dispatch => {
+        axios.post('http://localhost:3000/posts/update', {
+            id: id,
+            data: data
+        })
+            .then(() => dispatch(fetchAllPosts()))
+    }
+}

@@ -1,7 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { Stack, Avatar, Button } from "@mui/material";
 import styled from "styled-components";
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { fetchAllUsers } from '../../redux/actions/action'
+import { useSelector } from "react-redux";
+
 
 const MainDiv = styled.div`
   width: 60vw;
@@ -19,32 +22,28 @@ const DivBox = styled.div`
     `;
 
 
-const People = ()=>{
-    const [data, getData] = useState({'data': [{'username': 'something'}]})
-
-    const users = async()=>{
-        await axios.post('http://localhost:3000/users/allUsers').then(test=>getData(test))
-        console.log(data.data.map(each=>each.username))
+const People = () => {
+    const dispatch = useDispatch();
+    const usersSeletor = useSelector(state => state.users);
+    console.log(usersSeletor)
+    window.onload = () => {
+        dispatch(fetchAllUsers())
     }
-    
-    useEffect(() => {
-        users()
-    }, [])
 
-    return(
+    return (
         <MainDiv>
-            {data.data.map(each=>(
+            {usersSeletor ? usersSeletor.map(each => (
                 <DivBox>
-                <Stack direction={"row"} padding={1} spacing={2} justifyContent={"space-between"}>
-                        <Avatar/>
+                    <Stack direction={"row"} padding={1} spacing={2} justifyContent={"space-between"}>
+                        <Avatar />
                         <label>{each.username}</label>
-                    <div>
-                        <Button variant="contained">Add</Button>
-                        <Button variant="outlined">Ignore</Button>
-                    </div>
-                </Stack>
-            </DivBox>
-            ))}
+                        <div>
+                            <Button variant="contained">Add</Button>
+                            <Button variant="outlined">Ignore</Button>
+                        </div>
+                    </Stack>
+                </DivBox>
+            )) : null}
         </MainDiv>
     );
 }

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import { Button, Stack } from "@mui/material"
 import DialogPage from "./Dialog/Dialog";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchAllPosts, deleteWithId } from '../../../redux/actions/action';
 
 
 const MainDiv = styled.div`
@@ -21,35 +21,26 @@ const MainDiv = styled.div`
 
 
 const Posts = () => {
-    const [post, getPost] = useState([]);
+    const dispatch = useDispatch();
+    const fetchedData = useSelector(state => state.getAll);
 
-    const getData = async () => {
-        await axios.post('http://localhost:3000/posts/data')
-            .then(response => {
-                console.log(response.data)
-                getPost(response.data)
-            })
+    window.onload = () => {
+        dispatch(fetchAllPosts());
     }
+    console.log(fetchedData)
+
 
     const deleteAction = async (id) => {
-        await axios.post('http://localhost:3000/posts/delete', {
-            id: id
-        })
-            .then(response => {
-                console.log(response)
-                // window.location.reload();
-            }).catch(
-                (error) => console.log(error)
-            )
+        if (id) {
+            console.log(id)
+            dispatch(deleteWithId(id))
+        }
     }
 
-    useEffect(() => {
-        getData()
-    }, [])
 
     return (
         <div>
-            {post.map(each => (
+            {fetchedData ? fetchedData.map(each => (
                 <MainDiv key={each.id}>
                     <label><b>{each.username}</b></label>
                     <hr />
@@ -63,7 +54,7 @@ const Posts = () => {
                         <p></p>
                     }
                 </MainDiv>
-            ))}
+            )) : null}
         </div>
     );
 }

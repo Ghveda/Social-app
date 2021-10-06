@@ -15,7 +15,7 @@ const Home = () => {
             <div>
                 <MakePost/>
             </div>
-            <div>
+            <div >
                 <Posts/>
             </div>
         </MainDiv>

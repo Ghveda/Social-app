@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import allData from './components/redux/reducers/reducer';
+import thunk from 'redux-thunk';
 
-const data = createStore(allData)
+const data = createStore(allData, applyMiddleware(thunk));
 
 ReactDOM.render(
   <React.StrictMode>

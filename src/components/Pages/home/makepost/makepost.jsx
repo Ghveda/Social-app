@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Stack, Button, Avatar } from '@mui/material';
 import styled from "styled-components";
 import axios from 'axios';
+import { useDispatch } from "react-redux";
+import { fetchAllPosts } from '../../../redux/actions/action';
 
 
 const InputStyled = styled.input`
@@ -26,20 +28,23 @@ const MainDiv = styled.div`
 
 const MakePost = () => {
     const [post, getPost] = useState({});
+    const dispatch = useDispatch();
 
     const makePostClick = async () => {
         await axios.post('http://localhost:3000/posts/create', {
             username: localStorage.getItem('token'),
             post: post
         })
-        // window.location.reload();
+        dispatch(fetchAllPosts());
+        document.getElementById('inputValue').value = '';
+
     }
     return (
         <MainDiv>
             <div>
                 <Stack spacing={1} direction={"row"}>
                     <Avatar />
-                    <InputStyled placeholder="What's new Name" onChange={(e) => getPost(e.target.value)} />
+                    <InputStyled placeholder="What's new Name" onChange={(e) => getPost(e.target.value)} id="inputValue" />
                     <Button variant="contained" type="submit" size={"small"} onClick={makePostClick}>Post it</Button>
                 </Stack>
             </div>
