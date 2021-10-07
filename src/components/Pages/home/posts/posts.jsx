@@ -3,6 +3,7 @@ import { Button, Stack } from "@mui/material"
 import DialogPage from "./Dialog/Dialog";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllPosts, deleteWithId } from '../../../redux/actions/action';
+import { useEffect, useState } from "react";
 
 
 const MainDiv = styled.div`
@@ -21,14 +22,9 @@ const MainDiv = styled.div`
 
 
 const Posts = () => {
+    const [posts, setPosts] = useState([]);
     const dispatch = useDispatch();
     const fetchedData = useSelector(state => state.getAll);
-
-    window.onload = () => {
-        dispatch(fetchAllPosts());
-    }
-    console.log(fetchedData)
-
 
     const deleteAction = async (id) => {
         if (id) {
@@ -37,10 +33,17 @@ const Posts = () => {
         }
     }
 
+    useEffect(() => {
+        dispatch(fetchAllPosts());
+        setPosts(fetchedData)
+        console.log('did mount happen')
+    }, [])
+    console.log(posts)
+
 
     return (
         <div>
-            {fetchedData ? fetchedData.map(each => (
+            {posts ? posts.map(each => (
                 <MainDiv key={each.id}>
                     <label><b>{each.username}</b></label>
                     <hr />
@@ -51,7 +54,7 @@ const Posts = () => {
                             <Button variant="outlined" onClick={() => deleteAction(each.id)}>Delete</Button>
                         </Stack>
                         :
-                        <p></p>
+                        null
                     }
                 </MainDiv>
             )) : null}

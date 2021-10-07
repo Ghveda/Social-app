@@ -14,13 +14,13 @@ const App = () => {
         <Stack direction="row" spacing={2}>
           <Leftbar />
           <Switch>
-            <PrivateRoute exact path="/people" component={People} />
-            <PrivateRoute exact path="/" component={Home} />
-            <PrivateRoute exact path="/profile" component={Profile} />
-            <PrivateRoute exact path="/photos" component={Photos} />
-            <PrivateRoute exact path="/people" component={People} />
-            <Singin exact path="/login" />
-            <PublicRoute exact path="/registration" component={Registration} />
+            <PrivateRoute  path="/people" component={People} />
+            <PrivateRoute  exact path="/" component={Home} />
+            <PrivateRoute  path="/profile" component={Profile} />
+            <PrivateRoute  path="/photos" component={Photos} />
+            <PrivateRoute  path="/people" component={People} />
+            <Singin  path="/login" />
+            <PublicRoute  path="/registration" component={Registration} />
           </Switch>
           <Rightbar />
         </Stack>
