@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-const getAll = (state = null, action) => {
+const getAllPosts = (state = null, action) => {
     switch (action.type) {
         case 'GET_ALL':
             return action.payload;
@@ -19,10 +19,20 @@ const getAllUsers = (state = null, action) => {
     }
 }
 
+const getTokenReducer = (state = null, action) => {
+    switch (action) {
+        case 'GET_TOKEN':
+            return action.payload;
+        default:
+            return state
+    }
+}
 
 const allData = combineReducers({
-    getAll: getAll,
-    users: getAllUsers
+    getAllPosts: getAllPosts,
+    users: getAllUsers,
+    tokenReducer: getTokenReducer
 });
+
 
 export default allData;

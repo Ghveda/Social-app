@@ -4,6 +4,8 @@ import { MainDiv, InputStyled, LittleLabel, ImgStyled } from '../verification.st
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import jwt from 'jwt-simple';
+import { useDispatch } from "react-redux";
+import { getToken } from '../../../redux/actions/action';
 
 
 const image = "https://s.driving-tests.org/wp-content/uploads/2020/07/divided-highway-sign-232x300.jpg";
@@ -14,6 +16,7 @@ const Singin = () => {
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const singin = () => {
         axios.post('http://localhost:3000/users/signin', {
@@ -23,7 +26,9 @@ const Singin = () => {
             if (response) {
                 const resToken = await jwt.decode(response.data, 'secret');
                 localStorage.setItem("token", resToken.data);
-                console.log(response)
+                const token = localStorage.getItem('token')
+                console.log(token)
+                dispatch(getToken(token))
                 history.push('/');
             } else {
                 alert('password or username is incorrect')

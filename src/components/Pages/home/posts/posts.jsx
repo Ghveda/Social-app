@@ -4,6 +4,7 @@ import DialogPage from "./Dialog/Dialog";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllPosts, deleteWithId } from '../../../redux/actions/action';
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 const MainDiv = styled.div`
@@ -24,22 +25,27 @@ const MainDiv = styled.div`
 const Posts = () => {
     const [posts, setPosts] = useState([]);
     const dispatch = useDispatch();
-    const fetchedData = useSelector(state => state.getAll);
+    const postSelector = useSelector(state => state.getAllPosts);
 
     const deleteAction = async (id) => {
         if (id) {
-            console.log(id)
             dispatch(deleteWithId(id))
         }
     }
 
-    useEffect(() => {
-        dispatch(fetchAllPosts());
-        setPosts(fetchedData)
-        console.log('did mount happen')
-    }, [])
-    console.log(posts)
 
+    const getAllPosts = async () => {
+        await axios.post('http://localhost:3000/posts/data')
+            .then(res => setPosts(res.data))
+    }
+
+    useEffect(() => {
+        setPosts(postSelector)
+    }, [postSelector])
+
+    useEffect(() => {
+        getAllPosts()
+    }, [])
 
     return (
         <div>

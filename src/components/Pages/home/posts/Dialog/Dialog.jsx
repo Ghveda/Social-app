@@ -37,7 +37,6 @@ const DialogPage = ({ data, id }) => {
         setOpen(false);
     }
 
-
     return (
         <div>
             <Button variant="outlined" onClick={handleClickOpen}>

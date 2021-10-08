@@ -46,3 +46,19 @@ export const updatePost = (id, data) => {
             .then(() => dispatch(fetchAllPosts()))
     }
 }
+
+
+export const addNewPosts = (post, storage) => {
+    return dispatch => {
+        axios.post('http://localhost:3000/posts/create', {
+            username: storage,
+            post: post
+        })
+            .then(() => dispatch(fetchAllPosts()))
+    }
+}
+
+export const getToken = (token) => ({
+    type: 'GET_TOKEN',
+    payload: token
+})
