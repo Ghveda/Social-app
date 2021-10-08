@@ -18,6 +18,22 @@ const ImgDiv = styled.img`
     height: 40vh;
     `;
 
+
+const ProfileInfo = styled.div`
+        display: flex;
+        flex-direction: column;
+        &>label{
+            padding: 1rem;
+        }
+    `;
+
+const LabelStyle = styled.label`
+    font-family: Verdana, sans-serif;
+    color: #3864FF;
+    border-bottom: 1px solid #D7E0FF;
+    width: 10vw;
+    `;
+
 const Profile = () => {
 
     return (
@@ -26,12 +42,10 @@ const Profile = () => {
                 <div>
                     <ImgDiv src={"https://www.dailymoss.com/wp-content/uploads/2019/08/funny-profile-pic59.jpg"} />
                 </div>
-                <div>
-                    <Stack divider={<Divider orientation={"horizontal"} />} spacing={2} margin={3}>
-                        <label><b>Username</b></label>
-                        <label>{localStorage.getItem("token")}</label>
-                    </Stack>
-                </div>
+                <ProfileInfo>
+                    <LabelStyle>Username</LabelStyle>
+                    <label>{localStorage.getItem("token")}</label>
+                </ProfileInfo>
             </Stack>
         </MainDiv>
     );

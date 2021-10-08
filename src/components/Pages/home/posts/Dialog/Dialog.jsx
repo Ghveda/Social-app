@@ -17,8 +17,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const TextareaStyled = styled.textarea`
 padding: 0.5rem;
 outline: none;
-font-size: 0.8rem;
-
+font-size: 1rem;
+border: none;
+border-bottom: 1px solid  #D7E0FF;
+font-family: Verdana, sans-serif;
+color: #3864FF;
 `;
 
 
@@ -33,6 +36,9 @@ const DialogPage = ({ data, id }) => {
     }
 
     const handleClose = (id) => {
+        setOpen(false);
+    }
+    const handleDispatch = ()=>{
         dispatch(updatePost(id, inputValue));
         setOpen(false);
     }
@@ -54,7 +60,7 @@ const DialogPage = ({ data, id }) => {
                     <TextareaStyled defaultValue={data} onChange={(e) => setInputValue(e.target.value)} />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => handleClose(id)}>Save</Button>
+                    <Button onClick={() => handleDispatch(id)}>Save</Button>
                 </DialogActions>
             </Dialog>
         </div>

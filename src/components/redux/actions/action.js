@@ -62,3 +62,8 @@ export const getToken = (token) => ({
     type: 'GET_TOKEN',
     payload: token
 })
+
+export const logoutButton = (action)=>({
+    type: 'TURN_BUTTON',
+    payload: action
+})

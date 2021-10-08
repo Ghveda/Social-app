@@ -24,6 +24,23 @@ const MainDiv = styled.div`
   padding: 10px;
     `;
 
+const ButtonStyled = styled.button`
+    width: 7vw;
+    height: 5vh;
+    border-radius: 13px;
+    background-color: inherit;
+    border: 1px solid #3864FF;
+    color: #3864FF;
+    font-family: Verdana, sans-serif;
+    font-size: 1rem;
+    transition-duration: 1s;
+    &:hover{
+        transition-duration: 1s;
+        cursor: pointer;
+        background-color: #3864FF;
+        color: #FFFFFF;
+    }
+`;
 
 const MakePost = () => {
     const [post, getPost] = useState({});
@@ -41,7 +58,7 @@ const MakePost = () => {
                 <Stack spacing={1} direction={"row"}>
                     <Avatar />
                     <InputStyled placeholder="What's new Name" onChange={(e) => getPost(e.target.value)} id="inputValue" />
-                    <Button variant="contained" type="submit" size={"small"} onClick={makePostClick}>Post it</Button>
+                    <ButtonStyled variant="contained" type="submit" size={"small"} onClick={makePostClick}>Post it</ButtonStyled>
                 </Stack>
             </div>
         </MainDiv>

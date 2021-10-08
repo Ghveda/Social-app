@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Stack, Avatar, Button } from "@mui/material";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { fetchAllUsers } from '../../redux/actions/action'
-import { useSelector } from "react-redux";
+import axios from "axios";
 
 
 const MainDiv = styled.div`
@@ -13,35 +11,38 @@ const MainDiv = styled.div`
     `;
 
 const DivBox = styled.div`
-  padding: 3px;
-  width: 60vw;
+  padding: 10px;
+  width: 57vw;
   height: auto;
   border-radius: 10px;
   background-color: rgb(255,255,255,0.8);
   margin-top: 15px;
     `;
 
+const PeopleDiv = styled.div`
+display: flex;
+`;
 
 const People = () => {
-    const dispatch = useDispatch();
-    const usersSeletor = useSelector(state => state.users);
-    console.log(usersSeletor)
-    window.onload = () => {
-        dispatch(fetchAllUsers())
+    const [users, setUsers] = useState([]);
+
+    const fetchUsers = async () => {
+        await axios.post('http://localhost:3000/users/allUsers')
+            .then(state => setUsers(state.data))
     }
+
+    useEffect(() => {
+        fetchUsers()
+    }, [])
 
     return (
         <MainDiv>
-            {usersSeletor ? usersSeletor.map(each => (
+            {users ? users.map(each => (
                 <DivBox>
-                    <Stack direction={"row"} padding={1} spacing={2} justifyContent={"space-between"}>
+                    <PeopleDiv>
                         <Avatar />
                         <label>{each.username}</label>
-                        <div>
-                            <Button variant="contained">Add</Button>
-                            <Button variant="outlined">Ignore</Button>
-                        </div>
-                    </Stack>
+                    </PeopleDiv>
                 </DivBox>
             )) : null}
         </MainDiv>

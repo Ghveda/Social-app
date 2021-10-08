@@ -1,16 +1,41 @@
 import React from 'react';
-import { AppBar, Box, Toolbar, IconButton, Typography, Stack, Button } from '@mui/material';
-import { Search, Home } from '@mui/icons-material';
-import { SearchStyled, SearchIconWrapper, StyledInputBase } from './topbar.style';
+import { AppBar, Box, Toolbar, IconButton, Typography, Stack } from '@mui/material';
+import { Home } from '@mui/icons-material';
 import { homepage } from './topbar.logic';
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutButton, getToken } from '../../redux/actions/action';
+import styled from 'styled-components';
 
+const ButtonStyled = styled.button`
+    width: 7vw;
+    height: 5vh;
+    border-radius: 13px;
+    background-color: inherit;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    font-family: Verdana, sans-serif;
+    font-size: 1rem;
+    transition-duration: 0.8s;
+    &:hover{
+        transition-property: width background-color;
+        transition-duration: 0.8s;
+        cursor: pointer;
+        background-color: #EAEAEA;
+        color: #3864FF;
+        width: 11vw;
+    }
+`;
 
 const Topbar = () => {
     const history = useHistory();
+    const logoutSelector = useSelector(state => state.logout);
+    const dispatch = useDispatch();
 
     const logoutFunc = () => {
         localStorage.clear();
+        dispatch(logoutButton(false));
+        dispatch(getToken(''))
         history.push('/login');
     }
 
@@ -36,18 +61,9 @@ const Topbar = () => {
                     >
                         Ghveda's app
                     </Typography>
-                    <SearchStyled>
-                        <SearchIconWrapper>
-                            <Search />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </SearchStyled>
-                    {localStorage.getItem('token') ?
+                    {logoutSelector ?
                         <Stack direction="row" spacing={2} margin={1}>
-                            <Button variant="contained" color="success" onClick={logoutFunc}>Log out</Button>
+                            <ButtonStyled variant="contained" color="success" onClick={logoutFunc}>Log out</ButtonStyled>
                         </Stack>
                         : null}
                 </Toolbar>

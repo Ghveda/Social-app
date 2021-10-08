@@ -4,23 +4,32 @@ import { Button, Divider, Stack } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import jwt from 'jwt-simple';
+import { useDispatch } from "react-redux";
+import { getToken, logoutButton } from '../../../redux/actions/action';
 
 
 const Registration = () => {
     const history = useHistory();
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
+    const dispatch = useDispatch();
 
 
     const registration = async () => {
         await axios.post('http://localhost:3000/users/registration', {
             username: username,
             password: password
-        }).then((response) => {
-            const resToken = jwt.decode(response.data, 'secret');
-            localStorage.setItem('token', resToken.data)
-            localStorage.setItem('verification', 'true')
-            history.push('/')
+        }).then(async (response) => {
+            const resToken = await jwt.decode(response.data, 'secret');
+
+            localStorage.setItem("token", resToken.data);
+
+            const token = localStorage.getItem('token');
+            dispatch(getToken(token))
+
+            dispatch(logoutButton(true));
+
+            history.push('/');
         }).catch((error) => {
             alert('something incorrect')
             console.log(error)

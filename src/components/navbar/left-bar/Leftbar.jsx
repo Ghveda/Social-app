@@ -1,15 +1,15 @@
 import React from "react";
 import Profile from "./profile/profile";
 import Menu from "./menu/Menu";
-import { BoxStyled } from "./leftbar.style";
+import { BoxStyled,ProfileDivMain } from "./leftbar.style";
 
 
 const Leftbar = () => {
   return (
     <BoxStyled>
-      <div>
+      <ProfileDivMain>
         <Profile />
-      </div>
+      </ProfileDivMain>
       <div>
         <Menu />
       </div>

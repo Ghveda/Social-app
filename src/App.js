@@ -1,5 +1,5 @@
 import { Leftbar, Rightbar, TopBar } from "./components/navbar";
-import { Home, People, Profile, Photos } from "./components/Pages";
+import { Home, People, Profile } from "./components/Pages";
 import { Singin, Registration } from "./components/Pages/verification";
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Stack } from '@mui/material';
@@ -17,7 +17,6 @@ const App = () => {
             <PrivateRoute  path="/people" component={People} />
             <PrivateRoute  exact path="/" component={Home} />
             <PrivateRoute  path="/profile" component={Profile} />
-            <PrivateRoute  path="/photos" component={Photos} />
             <PrivateRoute  path="/people" component={People} />
             <Singin  path="/login" />
             <PublicRoute  path="/registration" component={Registration} />

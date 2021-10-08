@@ -14,11 +14,26 @@ const MainDiv = styled.div`
   border-radius: 10px;
   margin-top: 10px;
   padding: 10px;
+  disp
   hr{
-    display: flex;
     width: 10vw;
     margin-left: 0;
 }
+`;
+
+const UsernameDiv = styled.div`
+    font-family: Verdana, sans-serif;
+    color: #3864FF;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #D7E0FF;
+    width: 20vw;
+`;
+
+const ButtonBox = styled.div`
+    display:flex;
+    &>div{
+        padding: 5px;
+    }
 `;
 
 
@@ -51,14 +66,19 @@ const Posts = () => {
         <div>
             {posts ? posts.map(each => (
                 <MainDiv key={each.id}>
-                    <label><b>{each.username}</b></label>
-                    <hr />
+                    <UsernameDiv>
+                        <label><b>{each.username}</b></label>
+                    </UsernameDiv>
                     <p>{each.post}</p>
                     {each.username === localStorage.getItem('token') ?
-                        <Stack spacing={2} direction={"row"}>
-                            <DialogPage data={each.post} id={each.id} />
-                            <Button variant="outlined" onClick={() => deleteAction(each.id)}>Delete</Button>
-                        </Stack>
+                        <ButtonBox>
+                            <div>
+                                <DialogPage data={each.post} id={each.id} />
+                            </div>
+                            <div>
+                                <Button variant="outlined" onClick={() => deleteAction(each.id)}>Delete</Button>
+                            </div>
+                        </ButtonBox>
                         :
                         null
                     }

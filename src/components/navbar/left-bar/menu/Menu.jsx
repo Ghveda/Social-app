@@ -1,5 +1,5 @@
 import React from "react";
-import { DivElement } from "../leftbar.style";
+import { DivElementMenuBox } from "../leftbar.style";
 import { Home, PersonOutline, PhotoSizeSelectActual, PeopleOutline }  from '@mui/icons-material';
 import { ListStyle, LiStyle, DivElementMenu } from '../leftbar.style';
 import { useHistory } from "react-router-dom";
@@ -11,18 +11,13 @@ const Menu = ()=>{
     const history = useHistory();
 
     return(
-        <DivElementMenu>
-            <DivElement>
+            <DivElementMenuBox>
                 <ListStyle>
-                    <Stack justifyContent={"space-between"} >
-                        <LiStyle onClick={()=>homePage(history)}><Home/>Home</LiStyle>
-                        <LiStyle onClick={()=>peoplePage(history)}><PeopleOutline/>People</LiStyle>
-                        <LiStyle onClick={()=>photosPage(history)}><PhotoSizeSelectActual/>Photos</LiStyle>
-                        <LiStyle onClick={()=>profilePage(history)}><PersonOutline/>Profile</LiStyle>
-                    </Stack>
+                        <LiStyle onClick={()=>homePage(history)}>Home</LiStyle>
+                        <LiStyle onClick={()=>peoplePage(history)}>People</LiStyle>
+                        <LiStyle onClick={()=>profilePage(history)}>Profile</LiStyle>
                 </ListStyle>
-            </DivElement>
-        </DivElementMenu>
+            </DivElementMenuBox>
     )
 }
 

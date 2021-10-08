@@ -20,18 +20,28 @@ const getAllUsers = (state = null, action) => {
 }
 
 const getTokenReducer = (state = null, action) => {
-    switch (action) {
+    switch (action.type) {
         case 'GET_TOKEN':
             return action.payload;
         default:
-            return state
+            return state;
+    }
+}
+
+const logoutButtonReducer = (state = false, action) => {
+    switch (action.type) {
+        case 'TURN_BUTTON':
+            return action.payload;
+        default:
+            return state;
     }
 }
 
 const allData = combineReducers({
     getAllPosts: getAllPosts,
     users: getAllUsers,
-    tokenReducer: getTokenReducer
+    tokenReducer: getTokenReducer,
+    logout: logoutButtonReducer
 });
 
 
