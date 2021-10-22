@@ -5,8 +5,8 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import jwt from 'jwt-simple';
 import { useDispatch } from "react-redux";
-import { getToken, logoutButton } from '../../../redux/actions/action';
-
+import { getToken, logoutButton, getError } from '../../../redux/actions/action';
+import { useSelector } from 'react-redux';
 
 const image = "https://s.driving-tests.org/wp-content/uploads/2020/07/divided-highway-sign-232x300.jpg";
 
@@ -18,28 +18,24 @@ const Singin = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    const errorMessage = useSelector(state => state.handlleError);
+
     const singin = () => {
         axios.post('http://localhost:3000/users/signin', {
             username: username,
             password: password
         }).then(async (response) => {
-            if (response) {
-                const resToken = await jwt.decode(response.data, 'secret');
-
-                localStorage.setItem("token", resToken.data);
-
-                const token = localStorage.getItem('token');
-                dispatch(getToken(token))
-
+                localStorage.setItem("token", response.data.token);
+                console.log(response);
+                // const resToken = await jwt.decode(response.data.token, 'secret');
+                // const token = localStorage.getItem('token');
+                dispatch(getToken(response.data.token))
                 dispatch(logoutButton(true));
 
                 history.push('/');
-            } else {
-                alert('password or username is incorrect')
-                history.push('/login')
-            }
-        }).catch((error) => {
-            console.log(error)
+        })
+        .catch((error) => {
+            dispatch(getError(error.response))
         })
     };
 
@@ -63,6 +59,8 @@ const Singin = () => {
                             </label>
                             <LittleLabel>Forgot password?</LittleLabel>
                             <LittleLabel onClick={registration}>Registration</LittleLabel>
+                            {errorMessage ?
+                                <div>{errorMessage}</div> : null}
                             <div>
                                 <Button variant="contained" type={"submit"} onClick={singin}>Sign in</Button>
                             </div>
