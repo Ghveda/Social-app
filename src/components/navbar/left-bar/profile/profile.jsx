@@ -4,7 +4,7 @@ import { DivElement, ProfileDiv, LabelStyled } from "../leftbar.style";
 import { useSelector } from 'react-redux'
 
 const Profile = () => {
-    const tokenSelector = useSelector(state => state.tokenReducer);
+    const tokenSelector = useSelector(state => state.matchedToken);
 
     return (
         <DivElement>

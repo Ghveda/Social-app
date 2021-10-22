@@ -63,6 +63,16 @@ export const getToken = (token) => ({
     payload: token
 })
 
+export const matchToken = (token) => ({
+    type: 'MATCH_TOKEN',
+    payload: token
+})
+
+export const getError = (token) => ({
+    type: 'ERROR_TYPE',
+    payload: token
+})
+
 export const logoutButton = (action)=>({
     type: 'TURN_BUTTON',
     payload: action

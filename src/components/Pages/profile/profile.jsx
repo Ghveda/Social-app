@@ -1,6 +1,7 @@
 import React from "react";
 import { Divider, Stack } from "@mui/material";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 
 const MainDiv = styled.div`
@@ -35,6 +36,7 @@ const LabelStyle = styled.label`
     `;
 
 const Profile = () => {
+    const token = useSelector(state=>state.matchedToken)
 
     return (
         <MainDiv>
@@ -44,7 +46,7 @@ const Profile = () => {
                 </div>
                 <ProfileInfo>
                     <LabelStyle>Username</LabelStyle>
-                    <label>{localStorage.getItem("token")}</label>
+                    <label>{token}</label>
                 </ProfileInfo>
             </Stack>
         </MainDiv>

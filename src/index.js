@@ -6,8 +6,10 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import allData from './components/redux/reducers/reducer';
 import thunk from 'redux-thunk';
+import {composeWithDevTools} from "redux-devtools-extension"
 
-const data = createStore(allData, applyMiddleware(thunk));
+const middleware = [thunk]
+const data = createStore(allData, composeWithDevTools(applyMiddleware(...middleware)));
 
 ReactDOM.render(
   <React.StrictMode>

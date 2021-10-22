@@ -5,7 +5,8 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import jwt from 'jwt-simple';
 import { useDispatch } from "react-redux";
-import { getToken, logoutButton } from '../../../redux/actions/action';
+import { getToken, logoutButton, getError } from '../../../redux/actions/action';
+import { useSelector } from 'react-redux';
 
 
 const Registration = () => {
@@ -14,26 +15,26 @@ const Registration = () => {
     const [username, setUsername] = useState('');
     const dispatch = useDispatch();
 
+    const errorMessage = useSelector(state => state.handlleError);
+
 
     const registration = async () => {
         await axios.post('http://localhost:3000/users/registration', {
             username: username,
             password: password
         }).then(async (response) => {
-            const resToken = await jwt.decode(response.data, 'secret');
+            // const resToken = await jwt.decode(response.data, 'secret');
 
-            localStorage.setItem("token", resToken.data);
+            localStorage.setItem("token", response.data.token);
 
-            const token = localStorage.getItem('token');
-            dispatch(getToken(token))
-
+            // const token = localStorage.getItem('token');
+            
+            dispatch(getToken(response.data.token))
             dispatch(logoutButton(true));
 
             history.push('/');
         }).catch((error) => {
-            alert('something incorrect')
-            console.log(error)
-            history.push('/registration')
+            dispatch(getError(error.response.data.message))
         })
     };
 
@@ -50,13 +51,15 @@ const Registration = () => {
                     <h1>Sign in </h1>
                     <div>
                         <Stack divider={<Divider orientation={"horizontal"} />} spacing={1}>
-                            <label for="input1">Username:
+                            <label>Username:
                                 <InputStyled id="input1" type={"text"} placeholder={"type here"} onChange={(e) => setUsername(e.target.value)} required />
                             </label>
-                            <label for="label2">Password:
+                            <label>Password:
                                 <InputStyled id="label2" type={"password"} placeholder={"type here"} onChange={(e) => setPassword(e.target.value)} required />
                             </label>
                             <LittleLabel onClick={signIn}>Sign in</LittleLabel>
+                            {errorMessage ?
+                                <div>{errorMessage}</div> : null}
                             <div>
                                 <Button variant="contained" type={"submit"} onClick={registration}>Register</Button>
                             </div>
