@@ -3,7 +3,6 @@ import { Stack, Divider, Button } from "@mui/material"
 import { MainDiv, InputStyled, LittleLabel, ImgStyled } from '../verification.style';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
-import jwt from 'jwt-simple';
 import { useDispatch } from "react-redux";
 import { getToken, logoutButton, getError } from '../../../redux/actions/action';
 import { useSelector } from 'react-redux';
@@ -25,18 +24,15 @@ const Singin = () => {
             username: username,
             password: password
         }).then(async (response) => {
-                localStorage.setItem("token", response.data.token);
-                console.log(response);
-                // const resToken = await jwt.decode(response.data.token, 'secret');
-                // const token = localStorage.getItem('token');
-                dispatch(getToken(response.data.token))
-                dispatch(logoutButton(true));
+            localStorage.setItem("token", response.data.token);
+            dispatch(getToken(response.data.username))
+            dispatch(logoutButton(true));
 
-                history.push('/');
+            history.push('/');
         })
-        .catch((error) => {
-            dispatch(getError(error.response))
-        })
+            .catch((error) => {
+                dispatch(getError(error.response))
+            })
     };
 
     const registration = () => {

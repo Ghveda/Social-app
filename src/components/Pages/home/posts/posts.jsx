@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { Button, Stack } from "@mui/material"
+import { Button } from "@mui/material"
 import DialogPage from "./Dialog/Dialog";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchAllPosts, deleteWithId } from '../../../redux/actions/action';
+import { deleteWithId } from '../../../redux/actions/action';
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -41,6 +41,8 @@ const Posts = () => {
     const [posts, setPosts] = useState([]);
     const dispatch = useDispatch();
     const postSelector = useSelector(state => state.getAllPosts);
+    const usernameMatch = useSelector(state=>state.tokenReducer);
+    
 
     const deleteAction = async (id) => {
         if (id) {
@@ -70,7 +72,7 @@ const Posts = () => {
                         <label><b>{each.username}</b></label>
                     </UsernameDiv>
                     <p>{each.post}</p>
-                    {each.username === localStorage.getItem('token') ?
+                    {each.username === usernameMatch ?
                         <ButtonBox>
                             <div>
                                 <DialogPage data={each.post} id={each.id} />

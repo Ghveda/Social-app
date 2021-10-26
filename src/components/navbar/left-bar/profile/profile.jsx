@@ -4,7 +4,8 @@ import { DivElement, ProfileDiv, LabelStyled } from "../leftbar.style";
 import { useSelector } from 'react-redux'
 
 const Profile = () => {
-    const tokenSelector = useSelector(state => state.matchedToken);
+    const matchedToken = useSelector(state => state.matchedToken);
+    const loginToken = useSelector(state => state.tokenReducer);
 
     return (
         <DivElement>
@@ -13,7 +14,7 @@ const Profile = () => {
                 <div>
                     <ProfileDiv>
                         <label>Username </label>
-                        <LabelStyled>{tokenSelector}</LabelStyled>
+                        <LabelStyled>{loginToken?loginToken:matchedToken}</LabelStyled>
                     </ProfileDiv>
                 </div>
             </Stack>

@@ -29,13 +29,15 @@ const ButtonStyled = styled.button`
 
 const Topbar = () => {
     const history = useHistory();
-    const logoutSelector = useSelector(state => state.logout);
     const dispatch = useDispatch();
+    const userExists = useSelector(state => state.tokenReducer);
+    const fetchedUsernameMatch = useSelector(state => state.matchedToken);
+
 
     const logoutFunc = () => {
         localStorage.clear();
         dispatch(logoutButton(false));
-        dispatch(getToken(''))
+        dispatch(getToken(null))
         history.push('/login');
     }
 
@@ -61,11 +63,16 @@ const Topbar = () => {
                     >
                         Ghveda's app
                     </Typography>
-                    {logoutSelector ?
+                    {userExists ?
                         <Stack direction="row" spacing={2} margin={1}>
                             <ButtonStyled variant="contained" color="success" onClick={logoutFunc}>Log out</ButtonStyled>
                         </Stack>
-                        : null}
+                        : fetchedUsernameMatch ?
+                            <Stack direction="row" spacing={2} margin={1}>
+                                <ButtonStyled variant="contained" color="success" onClick={logoutFunc}>Log out</ButtonStyled>
+                            </Stack> :
+                            null
+                    }
                 </Toolbar>
             </AppBar>
         </Box>

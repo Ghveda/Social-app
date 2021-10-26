@@ -3,7 +3,6 @@ import { ImgStyled, InputStyled, LittleLabel, MainDiv } from '../verification.st
 import { Button, Divider, Stack } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import jwt from 'jwt-simple';
 import { useDispatch } from "react-redux";
 import { getToken, logoutButton, getError } from '../../../redux/actions/action';
 import { useSelector } from 'react-redux';
@@ -23,13 +22,8 @@ const Registration = () => {
             username: username,
             password: password
         }).then(async (response) => {
-            // const resToken = await jwt.decode(response.data, 'secret');
-
             localStorage.setItem("token", response.data.token);
-
-            // const token = localStorage.getItem('token');
-            
-            dispatch(getToken(response.data.token))
+            dispatch(getToken(response.data.username));
             dispatch(logoutButton(true));
 
             history.push('/');
